@@ -1,12 +1,9 @@
-// Question: 1. Where was Margaery Tyrell born?
+// Question: 5. What is Robert Baratheon's second alias?
 
 import React, { Component } from 'react';
 import axios from 'axios';
 
-// API url
-// const URL = "http://anapioficeandfire.com/api/characters/16"
-
-export default class FirstQuestion extends Component {
+export default class FifthQuestion extends Component {
     constructor (props) {
         super (props)
 
@@ -17,9 +14,10 @@ export default class FirstQuestion extends Component {
 
     componentDidMount () {
         // retrieving data (in this case a single object) from the API link
-        axios.get("http://anapioficeandfire.com/api/characters/16")
+        axios.get("http://www.anapioficeandfire.com/api/characters/901")
         .then(res => {
-            this.setState({ info: res.data.born })
+            // setState so "info" carries the correct answer to the question
+            this.setState({ info: res.data.aliases[1] })
         })
         .catch(e => console.error(e.message))
 
@@ -27,8 +25,8 @@ export default class FirstQuestion extends Component {
     render() {
         return (
             <div>
-                <h3>Question 1:</h3>
-                <h4 className='question'>Where was Margaery Tyrell born?</h4>
+                <h3>Question 5:</h3>
+                <h4 className='question'>What is Robert Baratheon's second alias?</h4>
                 {/* {console.log(this.state.info)} */}
                 <p className='answer'>{ this.state.info }</p>
             </div>
